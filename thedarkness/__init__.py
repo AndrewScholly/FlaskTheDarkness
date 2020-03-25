@@ -1,5 +1,9 @@
-from flask import Flask
-
+from flask import Flask, render_template
+#import python_game_code.random_functions
+#import python_game_code.rooms
+#import python_game_code.runner
+#import python_game_code.play
+#play = python_game_code.play
 def create_app(test_config=None):
     app = Flask(__name__)
     app.config.from_mapping(
@@ -11,9 +15,13 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-
+        #link is base page
+    from . import link
+    app.register_blueprint(link.bp)
     @app.route('/')
-    def index():
-        return 'The darkness demo'
+    def link():
+        return render_template('base.html')
+    #game is used for playing compared to login
+
 
     return app
