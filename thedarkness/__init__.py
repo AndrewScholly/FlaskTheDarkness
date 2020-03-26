@@ -1,9 +1,12 @@
 from flask import Flask, render_template
-#import python_game_code.random_functions
-#import python_game_code.rooms
-#import python_game_code.runner
-#import python_game_code.play
-#play = python_game_code.play
+
+import python_game_code.random_functions
+import python_game_code.test_value
+from . import rooms
+# import python_game_code.rooms
+# import python_game_code.runner
+
+
 def create_app(test_config=None):
     app = Flask(__name__)
     app.config.from_mapping(
@@ -15,7 +18,7 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-        #link is base page
+        # link is base page
     from . import link
     app.register_blueprint(link.bp)
 
@@ -25,8 +28,20 @@ def create_app(test_config=None):
     @app.route('/')
     def link():
         return render_template('index.html')
-    #game is used for playing compared to login
-    app.register_blueprint(game.bp)
 
+    @app.route('/game')
+    def game():
+        room = [
+            rooms.room1(),
+            rooms.room2(),
+            rooms.room3(),
+            rooms.room4(),
+            rooms.room5()
+        ]
+        x = python_game_code.random_functions.random_number()
+        current_room = room[x]
+        text = current_room.choices()
+
+        return render_template('game.html', room=text)
 
     return app

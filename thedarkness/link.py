@@ -5,4 +5,4 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 
-bp = Blueprint('link', __name__, url_prefix='/index')
+bp = Blueprint('link', __name__, url_prefix='/')

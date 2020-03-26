@@ -2,9 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}{% endblock %} - The Darkness</title>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
-  <body>
-    <h1>Fight the darkness!</h1>
-  </body>
+  <header>
+    {% block header %}{% endblock %}
+    {% block header2 %}{% endblock %}
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
 </html>

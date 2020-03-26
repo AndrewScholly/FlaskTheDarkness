@@ -1,3 +1,8 @@
 {% extends 'base.html' %}
-<h1>Begin the game!</h1>
-<button type="button" name="button" onclick="/game">Start</button>
+{% block title %}Reality breaking...{% endblock %}
+{% block header %}<h1>You must fix the universe. Are you up for it?</h1>{% endblock %}
+{% block content %}
+<form method="get" action="/game">
+    <button type="submit">Start</button>
+</form>
+{% endblock %}
