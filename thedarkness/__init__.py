@@ -18,10 +18,15 @@ def create_app(test_config=None):
         #link is base page
     from . import link
     app.register_blueprint(link.bp)
+
+    from . import game
+    app.register_blueprint(game.bp)
+
     @app.route('/')
     def link():
-        return render_template('base.html')
+        return render_template('index.html')
     #game is used for playing compared to login
+    app.register_blueprint(game.bp)
 
 
     return app
