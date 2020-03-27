@@ -1,3 +1,4 @@
+from flask import request
 import python_game_code.random_functions
 class room1(object):
     which_room = "Finding the Sword"
@@ -6,8 +7,24 @@ class room1(object):
 
 class room1_scene1(room1):
     def choices(self):
-        return "You enter room1"
-
+        rocks = [
+        'throw rock',
+        'throw rocks',
+        'throw',
+        'rock',
+        'rocks',
+        'throws'
+        'Throw',
+        'Throw rock',
+        'Throw Rock'
+        ]
+        return "You enter the corridor, looking around for the sword, when a darkness being jumps out at you! Without any pieces yet, you need to defeat the being somehow without touching him. There are some rocks nearby"
+        if request.method == "POST":
+            answer = request.form['answer']
+            def right_answer():
+                for i in rocks:
+                    if answer == i:
+                        return "You found the sword!"
 
 class room2(object):
     which_room = "Finding the Saber"
