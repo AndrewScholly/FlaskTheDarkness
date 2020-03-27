@@ -38,10 +38,19 @@ def create_app(test_config=None):
             rooms.room4(),
             rooms.room5()
         ]
+        scenes = [
+            rooms.room1_scene1(),
+            rooms.room2_scene1(),
+            rooms.room3_scene1(),
+            rooms.room4_scene1(),
+            rooms.room5_scene1()
+        ]
         x = python_game_code.random_functions.random_number()
+        y = python_game_code.random_functions.random_scene()
         current_room = room[x]
-        text = current_room.choices()
-
-        return render_template('game.html', room=text)
+        text = current_room.which_room
+        current_scene = scenes[x]
+        more_text = current_scene.choices()
+        return render_template('game.html', room=text, scene=more_text)
 
     return app
